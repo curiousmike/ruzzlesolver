@@ -1,13 +1,8 @@
 import styled from "styled-components";
 import { DrawBoard } from "./drawBoard";
 import { BONUS_VALUES } from "./types";
-const Background = styled.div`
-  height: 100vh;
-  background-color: #34a6e5;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
+import { Background, SolveButton } from "./MainStyles";
+import { traverseBoard } from "./TraverseBoard";
 const testValues = [
   [
     { character: "W", bonus: BONUS_VALUES.NONE },
@@ -44,13 +39,14 @@ function getLetterDefaultValue(letter) {
   const tenPoint = "q";
 }
 function App() {
+  const doSolve = () => {
+    traverseBoard(testValues, 0, 0);
+  };
+
   return (
     <Background>
-      <header>
-        <p>
-          <DrawBoard boardData={testValues} />
-        </p>
-      </header>
+      <DrawBoard boardData={testValues} />
+      <SolveButton onClick={doSolve}>Solve</SolveButton>
     </Background>
   );
 }
