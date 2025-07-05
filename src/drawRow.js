@@ -32,13 +32,12 @@ const Tile = styled.span`
   height: 96px;
 `;
 export const DrawRow = ({ rowData }) => {
-  console.log("rowdata = ", rowData);
   return (
     <RowContainer>
       {rowData.map((item, index) => (
         <Tile key={index} bonus={item.bonus}>
           {item.character}
-        </Tile> // Remember to add a unique 'key' prop
+        </Tile>
       ))}
     </RowContainer>
   );
