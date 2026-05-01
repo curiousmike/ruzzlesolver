@@ -236,16 +236,17 @@ function resetGrid() {
                 nodeMultiplier: 1,
                 pathMultiplier: 1
             };
+            updateCellStyles(row, col);
         }
     }
 
     // Clear output
-    document.getElementById('gridOutput').textContent = '';
+    // document.getElementById('gridOutput').textContent = '';
 }
 
 // Collect and display grid data
 function collectGridData() {
-    const gridOutput = document.getElementById('gridOutput');
+    // const gridOutput = document.getElementById('gridOutput');
 
     // Format the data for display
     let formattedData = '[\n';
@@ -261,7 +262,7 @@ function collectGridData() {
     }
     formattedData += '\n]';
 
-    gridOutput.textContent = formattedData;
+    // gridOutput.textContent = formattedData;
 
     // Also log to console for debugging
     console.log('Grid Data:', grid);
@@ -290,7 +291,7 @@ function doDefaults() {
     }
 
     // Clear output
-    document.getElementById('gridOutput').textContent = '';
+    // document.getElementById('gridOutput').textContent = '';
 
 }
 
@@ -298,7 +299,7 @@ function doDefaults() {
 window.onload = function () {
     createGrid();
     // Add event listeners to buttons
-    document.querySelector('.done-btn').addEventListener('click', collectGridData);
+    // document.querySelector('.done-btn').addEventListener('click', collectGridData);
     document.querySelector('.reset-btn').addEventListener('click', resetGrid);
     document.querySelector('.solve-btn').addEventListener('click', doSolve);
     document.querySelector('.defaults-btn').addEventListener('click', doDefaults);

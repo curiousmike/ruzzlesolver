@@ -1,36 +1,13 @@
-import { globalWordList } from "./globalwordlist.js";
-
+import { globalWordList, wordIndices } from "./globalwordlist.js";
+import { globalPaths } from './paths2.js';
+// console.log('paths[3] = ', paths[7]);
+const minWordLength = 3;
+const maxWordLength = 8; // 8;
 // Word Scramble Solver with Advanced Scoring System
 // Includes all recent updates: path multipliers, node multipliers, proper stacking
-
 // 4x4 Grid with complex multipliers
-// const grid = [
-//     [
-//         { letter: 'e', value: 1, nodeMultiplier: 1, pathMultiplier: 1 }, // Normal node
-//         { letter: 'i', value: 1, nodeMultiplier: 1, pathMultiplier: 1 }, // Normal node
-//         { letter: 'e', value: 1, nodeMultiplier: 1, pathMultiplier: 2 }, // Normal node
-//         { letter: 'a', value: 1, nodeMultiplier: 2, pathMultiplier: 1 }  // Normal node
-//     ],
-//     [
-//         { letter: 's', value: 1, nodeMultiplier: 3, pathMultiplier: 1 }, // Normal node
-//         { letter: 'p', value: 4, nodeMultiplier: 1, pathMultiplier: 3 }, // Double letter
-//         { letter: 'm', value: 3, nodeMultiplier: 1, pathMultiplier: 1 }, // Triple word
-//         { letter: 'r', value: 1, nodeMultiplier: 1, pathMultiplier: 1 }  // Double word
-//     ],
-//     [
-//         { letter: 'p', value: 4, nodeMultiplier: 1, pathMultiplier: 1 }, // Normal node
-//         { letter: 'a', value: 1, nodeMultiplier: 1, pathMultiplier: 1 }, // Triple letter
-//         { letter: 'i', value: 1, nodeMultiplier: 1, pathMultiplier: 1 }, // Double word
-//         { letter: 'u', value: 2, nodeMultiplier: 1, pathMultiplier: 1 }  // Normal node
-//     ],
-//     [
-//         { letter: 'n', value: 1, nodeMultiplier: 1, pathMultiplier: 2 }, // Normal node
-//         { letter: 't', value: 1, nodeMultiplier: 1, pathMultiplier: 1 }, // Normal node
-//         { letter: 'r', value: 1, nodeMultiplier: 1, pathMultiplier: 2 }, // Normal node
-//         { letter: 'r', value: 1, nodeMultiplier: 3, pathMultiplier: 1 }  // Normal node
-//     ]
-// ];
 let grid;
+
 // Convert matrix index to character
 function indexToChar(index) {
     const row = Math.floor(index / 4);
@@ -57,7 +34,14 @@ function positionToChar(row, col) {
 
 // Method to check if a path represents a valid word
 function isWord(pathString) {
-    if (globalWordList.includes(pathString)) return true;
+    const startChar = pathString.charAt(0).toLowerCase();
+    const charDetails = wordIndices[startChar];
+    for (let i = charDetails.start; i < charDetails.end; i++) {
+        if (globalWordList[i] === pathString) {
+            return true;
+        }
+    }
+    // if (globalWordList.includes(pathString)) return true;
     return false;
 }
 
@@ -135,34 +119,18 @@ function generatePaths(length) {
     return paths;
 }
 
-// Generate all possible words of a given length
-function generateWordsOLD(length) {
-    const words = [];
-    const paths = generatePaths(length);
-
-    for (const path of paths) {
-        let word = '';
-        for (const [row, col] of path) {
-            word += grid[row][col].letter;
-        }
-        if (isWord(word)) {
-            const score = calculateScore(path);
-            words.push({
-                word: word,
-                path: path,
-                score: calculateScore(path)
-            });
-        }
-    }
-
-    return words;
-}
 
 function generateWords(length) {
     const words = [];
     console.log('Generate Paths for length = ', length);
-    const paths = generatePaths(length);
-    console.log('Paths generated for length of ', length);
+    let paths;
+    if (globalPaths[length]) {
+        console.log('using global path for ', length);
+        paths = globalPaths[length].data;
+    } else {
+        console.log('BAD generating path of length ', length);
+        paths = generatePaths(length);
+    }
 
     for (const path of paths) {
         let word = '';
@@ -202,8 +170,6 @@ export function solve(theGrid) {
     console.log('Starting solve...');
     grid = theGrid;
     // Generate words of different lengths
-    const minWordLength = 3;
-    const maxWordLength = 8; // 8;
     const results = {};
     const allWords = [];
 

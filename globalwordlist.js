@@ -1,3 +1,32 @@
+export const wordIndices = {
+  'a': { start: 0, end: 6558 },
+  'b': { start: 6559, end: 13406 },
+  'c': { start: 13407, end: 23791 },
+  'd': { start: 23792, end: 30227 },
+  'e': { start: 30228, end: 34591 },
+  'f': { start: 34592, end: 39528 },
+  'g': { start: 39529, end: 43478 },
+  'h': { start: 43479, end: 47558 },
+  'i': { start: 47559, end: 51571 },
+  'j': { start: 51572, end: 52677 },
+  'k': { start: 52678, end: 53989 },
+  'l': { start: 53990, end: 57699 },
+  'm': { start: 57700, end: 63969 },
+  'n': { start: 63970, end: 66177 },
+  'o': { start: 66178, end: 70155 },
+  'p': { start: 70156, end: 78848 },
+  'q': { start: 78849, end: 79416 },
+  'r': { start: 79417, end: 86557 },
+  's': { start: 86558, end: 99148 },
+  't': { start: 99149, end: 105099 },
+  'u': { start: 105100, end: 108033 },
+  'v': { start: 108034, end: 109965 },
+  'w': { start: 109966, end: 112892 },
+  'x': { start: 112893, end: 112974 },
+  'y': { start: 112975, end: 113412 },
+  'z': { start: 113413, end: 113810 }
+}
+
 export const globalWordList = [
   "aa",
   "aah",

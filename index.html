@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Grid Builder</title>
+    <title>Ruzzle Finder</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Word Grid Builder</h1>
+    <h1>Ruzzle Finder</h1>
     
     <div class="controls">
-        <h3>Grid Configuration</h3>
-        <p class="info-text">Enter letters in each cell and set values, node multipliers, and path multipliers</p>
         <button class="solve-btn" >SOLVE</button>
         <button class="defaults-btn" >Sample Data</button>
         <button class="reset-btn" >Reset Grid</button>
-        <button class="done-btn" >Done - Collect Grid Data</button>
+        <!-- <button class="done-btn" >Done - Collect Grid Data</button> -->
     </div>
     
     <div class="grid-container" id="grid"></div>
@@ -26,10 +24,10 @@
         <pre id="foundWordOutput">Found words press "SOLVE"</pre>
     </div>
 
-    <div class="grid-data">
+    <!-- <div class="grid-data">
         <h3>Grid Data (JSON Format)</h3>
         <pre id="gridOutput">Grid data will appear here after clicking "Done"</pre>
-    </div>
+    </div> -->
 
     <script type="module" src="code.js" ></script>
 </body>
