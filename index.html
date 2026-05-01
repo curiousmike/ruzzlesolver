@@ -12,17 +12,25 @@
     <div class="controls">
         <h3>Grid Configuration</h3>
         <p class="info-text">Enter letters in each cell and set values, node multipliers, and path multipliers</p>
-        <button class="done-btn" onclick="collectGridData()">Done - Collect Grid Data</button>
-        <button class="reset-btn" onclick="resetGrid()">Reset Grid</button>
+        <button class="solve-btn" >SOLVE</button>
+        <button class="defaults-btn" >Sample Data</button>
+        <button class="reset-btn" >Reset Grid</button>
+        <button class="done-btn" >Done - Collect Grid Data</button>
     </div>
     
     <div class="grid-container" id="grid"></div>
     
+
+    <div class="found-word-data">
+        <h3>Found Words</h3>
+        <pre id="foundWordOutput">Found words press "SOLVE"</pre>
+    </div>
+
     <div class="grid-data">
         <h3>Grid Data (JSON Format)</h3>
         <pre id="gridOutput">Grid data will appear here after clicking "Done"</pre>
     </div>
 
-    <script src="code.js"></script>
+    <script type="module" src="code.js" ></script>
 </body>
 </html>
